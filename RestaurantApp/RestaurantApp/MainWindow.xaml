@@ -7,6 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Background="Red" Height="100" Width="100"></Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.35*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button FontFamily="Segoe MDL2 Assets" FontSize="45" Content="&#xE721;"  Background="Transparent" BorderThickness="0" Grid.Row="1"/>
+        <Button FontFamily="Segoe UI Symbol" FontSize="70" Content="♥" Background="Transparent" BorderThickness="0" Grid.Row="2"/>
+        
+        
+       
     </Grid>
 </Window>

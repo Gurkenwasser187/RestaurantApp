@@ -20,6 +20,11 @@ namespace RestaurantApp
         public MainWindow()
         {
             InitializeComponent();
+          
+        }
+
+        private void ButtonSearch_Click(object sender, RoutedEventArgs e)
+        {
             SearchWindow searchWindow = new SearchWindow();
             searchWindow.Show();
         }

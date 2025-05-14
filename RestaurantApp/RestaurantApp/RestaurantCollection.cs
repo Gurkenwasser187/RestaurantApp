@@ -47,5 +47,27 @@ namespace RestaurantApp
                 }
             }
         }
+
+        public void SortByName()
+        {
+            RestaurantList = RestaurantList.OrderBy(r => r.Name).ToList();
+        }
+
+        public void SortByKindOfFood()
+        {
+            RestaurantList = RestaurantList.OrderBy(r => r.KindOfFood).ToList();
+        }
+
+        public void SortByDistence()
+        {
+            //ToDo: Implement distance sorting
+        }
+
+        public void SortByRating()
+        {
+            RestaurantList = RestaurantList.OrderBy(r => r.Rating).ToList();
+        }
+
+
     }
 }

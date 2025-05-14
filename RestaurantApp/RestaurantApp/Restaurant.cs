@@ -20,7 +20,22 @@ namespace RestaurantApp
         }
 
         public string Address { get; set; }
+        private int _rating;
+
+        public int Rating
+        {
+            get { return _rating; }
+            set 
+            {
+                if (!(value < 0 || value > 5))
+                {
+                    _rating = value;
+                }
+            }
+        }
+
         public string Link { get; set; }
+        public string Comment { get; set; }
         public string NameOfImmage { get; set; }
 
         public Restaurant(string name, string kindOfFood, string address, string link, string nameOfImmage)

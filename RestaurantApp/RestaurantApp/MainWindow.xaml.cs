@@ -20,6 +20,8 @@ namespace RestaurantApp
         public MainWindow()
         {
             InitializeComponent();
+            SearchWindow searchWindow = new SearchWindow();
+            searchWindow.Show();
         }
     }
 }

@@ -66,8 +66,7 @@ namespace RestaurantApp
         public void SortByRating()
         {
             RestaurantList = RestaurantList.OrderBy(r => r.Rating).ToList();
+            RestaurantList.Reverse();
         }
-
-
     }
 }

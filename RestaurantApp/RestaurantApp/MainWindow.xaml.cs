@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace RestaurantApp
 {
     /// <summary>
@@ -16,11 +17,12 @@ namespace RestaurantApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Finn Test 123
         public MainWindow()
         {
             InitializeComponent();
           
+
+            
         }
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)

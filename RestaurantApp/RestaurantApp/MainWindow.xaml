@@ -20,9 +20,10 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
+        <Label Grid.ColumnSpan="2" Background="Yellow" Content="Foodat" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="45"/>
         <Button x:Name="ButtonSearch" FontFamily="Segoe MDL2 Assets" FontSize="45" Content="&#xE721;"  Background="Transparent" BorderThickness="0" Grid.Row="1" Click="ButtonSearch_Click"/>
-        <Button x:Name="ButtonLikes"  FontFamily="Segoe UI Symbol" FontSize="70" Content="♥" Background="Transparent" BorderThickness="0" Grid.Row="2"/>
-        
+        <Button x:Name="ButtonLikes" Content="❤️" FontSize="45" Background="Transparent" BorderThickness="0" Grid.Row="2"/>
+        <Button x:Name="ButtonTopThree" Content="🏆" Background="Transparent" FontSize="45" Grid.Row="3" BorderThickness="0"/>
         <Button x:Name="ButtonComments" FontFamily="Segoe MDL2 Assets" FontSize="45" Content="&#xE8BD;" ToolTip="Nachricht senden" Background="Transparent" BorderThickness="0" Grid.Row="4" />
 
 

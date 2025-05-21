@@ -19,14 +19,33 @@ namespace RestaurantApp
     /// </summary>
     public partial class SearchWindow : Window
     {
+        private string filePath = "restaurant_data.txt";
+        private List<RestaurantDisplay> restaurantDisplayList = new List<RestaurantDisplay>();
+
         public SearchWindow()
         {
             InitializeComponent();
 
-            // Alle Reastaurants laden & anzeigen
+            RestaurantCollection restaurantCollection = new RestaurantCollection();
+            restaurantCollection.LoadFromFile(filePath);
 
-            
-            
+
+            // Alle Reastaurants anzeigen
+
+            foreach (Restaurant restaurant in restaurantCollection.RestaurantList)
+            {
+                restaurantDisplayList.Add(new RestaurantDisplay()
+                {
+                    Name = restaurant.Name,
+                    KindOfFood = restaurant.KindOfFood,
+                    Address = restaurant.Address,
+                    Rating = restaurant.Rating,
+                    Link = restaurant.Link,
+                    Comment = restaurant.Comment,
+                    NameOfImmage = restaurant.NameOfImmage
+                });
+            }
+
         }
     }
 }

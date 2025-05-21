@@ -6,21 +6,5 @@
              xmlns:local="clr-namespace:RestaurantApp"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Black" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Label Background="Yellow"  Content="🔍" FontSize="25" Margin="0,3,0,109" Grid.RowSpan="2"/>
-
-        <TextBox x:Name="TextboxSearchBar"  Background="Yellow" BorderBrush="Black" BorderThickness="2" Width="400" Height="20" VerticalAlignment="Top" Margin="15" HorizontalAlignment="Center"></TextBox>
-        
-        
-
-    </Grid>
+    
 </UserControl>

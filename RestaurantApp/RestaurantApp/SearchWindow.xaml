@@ -6,7 +6,60 @@
         xmlns:local="clr-namespace:RestaurantApp"
         mc:Ignorable="d"
         Title="SearchWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="Black" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Border Background="Yellow" Grid.Row="0" Grid.Column="0"/>
+
+
+        <WrapPanel HorizontalAlignment="Center">
+
+            <Button x:Name="BackToMainWindow" Content="🏠" FontSize="20" Background="Transparent" BorderThickness="0"/>
+
+            <TextBox x:Name="TextboxSearchBar" Background="Yellow" BorderBrush="Black" 
+           BorderThickness="2" Width="400" Height="20" VerticalAlignment="Top" 
+           Margin="15" />
+
+            <Label Content="🔍" FontSize="20" Margin="5"/>
+
+
+            <Label 
+               Content="Sortieren Nach:" FontSize="15"  
+               VerticalAlignment="Center" FontFamily="Britannic"
+           />
+
+            <ComboBox x:Name="ComboboxSearchCritics" Background="Yellow"
+                 Width="90" Height="30">
+                <ComboBoxItem Content="A-Z" Background="Yellow"/>
+                <ComboBoxItem Content="Z-A" Background="Yellow"/>
+                <ComboBoxItem Content="Beste Bewertung-Niedrigste Bewertung" Background="Yellow"/>
+                <ComboBoxItem Content="" Background="Yellow"/>
+            </ComboBox>
+
+            
+
+        </WrapPanel>
+
         
+
+
+
+        
+        
+        
+        
+
+
+
+
     </Grid>
 </Window>

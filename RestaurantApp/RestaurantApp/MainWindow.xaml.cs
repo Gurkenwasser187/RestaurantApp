@@ -33,6 +33,7 @@ namespace RestaurantApp
         {
             SearchWindow searchWindow = new SearchWindow();
             searchWindow.Show();
+            this.Close();
         }
     }
 }

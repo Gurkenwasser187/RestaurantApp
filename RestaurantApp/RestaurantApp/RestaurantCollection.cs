@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace RestaurantApp
@@ -27,7 +28,7 @@ namespace RestaurantApp
             {
                 foreach (Restaurant restaurant in RestaurantList)
                 {
-                    writer.WriteLine(restaurant.Serialize());
+                    // writer.WriteLine(restaurant.Serialize());
                 }
             }
         }
@@ -36,15 +37,9 @@ namespace RestaurantApp
         {
             if (File.Exists(filePath))
             {
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        Restaurant restaurant = Restaurant.Deserialize(line);
-                        RestaurantList.Add(restaurant);
-                    }
-                }
+                string jsonString = File.ReadAllText(filePath);
+
+                RestaurantList = JsonSerializer.Deserialize<List<Restaurant>>(jsonString);
             }
         }
 

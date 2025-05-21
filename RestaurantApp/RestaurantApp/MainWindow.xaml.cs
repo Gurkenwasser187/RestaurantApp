@@ -17,12 +17,16 @@ namespace RestaurantApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string filePath = "restaurant_data.txt";
         public MainWindow()
         {
             InitializeComponent();
-          
 
-            
+            RestaurantCollection restaurantCollection = new RestaurantCollection();
+            restaurantCollection.LoadFromFile(filePath);
+
+
+
         }
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)

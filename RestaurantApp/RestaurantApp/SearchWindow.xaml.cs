@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Serilog;
 
 namespace RestaurantApp
 {
@@ -34,16 +35,14 @@ namespace RestaurantApp
 
             foreach (Restaurant restaurant in restaurantCollection.RestaurantList)
             {
-                restaurantDisplayList.Add(new RestaurantDisplay()
+                restaurantDisplayList.Add(new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood, restaurant.Address, restaurant.Rating, restaurant.Link)
                 {
-                    Name = restaurant.Name,
-                    KindOfFood = restaurant.KindOfFood,
-                    Address = restaurant.Address,
-                    Rating = restaurant.Rating,
-                    Link = restaurant.Link,
                     Comment = restaurant.Comment,
                     NameOfImmage = restaurant.NameOfImmage
+
+                    
                 });
+                Log.Debug($"{restaurant.Name} | {restaurant.KindOfFood} | {restaurant.Address} | {restaurant.Rating} | {restaurant.Link} added to display list");
                 WarpPanelRestaurants.Children.Add(restaurantDisplayList.Last());
             }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,9 +29,24 @@ namespace RestaurantApp
         public string? Comment { get; set; }
         public string? NameOfImmage { get; set; }
 
-        public RestaurantDisplay()
+        public RestaurantDisplay(string name, string kindOfFood, string address, double rating, string link)
         {
+            Name = name;
+            KindOfFood = kindOfFood;
+            Address = address;
+            Rating = rating;
+            Link = link;
+
             InitializeComponent();
+            Log.Debug($"{Name} | {KindOfFood} | {Address} | {Rating} | {Link} Display configured");
+            LabelName.Content = Name;
+            LabelTypeOfFood.Content = KindOfFood;
+            LabelLocation.Content = Address;
+            LabelRating.Content = Rating.ToString("0.0");
+            LabelLink.Content = Link;
+
         }
+
+
     }
 }

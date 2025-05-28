@@ -23,7 +23,7 @@
         <WrapPanel HorizontalAlignment="Center">
 
             <Button x:Name="BackToMainWindow" Content="🏠" FontSize="20" Background="Transparent" BorderThickness="0" Click="BackToMainWindow_Click">
-                
+              
             </Button>
 
             <TextBox x:Name="TextboxSearchBar" Background="Yellow" BorderBrush="Black" 

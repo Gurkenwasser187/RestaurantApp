@@ -31,8 +31,6 @@ namespace RestaurantApp
             restaurantCollection.LoadFromFile(filePath);
 
 
-            // Alle Reastaurants anzeigen
-
             foreach (Restaurant restaurant in restaurantCollection.RestaurantList)
             {
                 restaurantDisplayList.Add(new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood, restaurant.Address, restaurant.Rating, restaurant.Link)

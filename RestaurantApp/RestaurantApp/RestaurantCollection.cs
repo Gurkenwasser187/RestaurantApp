@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace RestaurantApp
 {
@@ -35,6 +36,11 @@ namespace RestaurantApp
                 string jsonString = File.ReadAllText(filePath);
 
                 RestaurantList = JsonSerializer.Deserialize<List<Restaurant>>(jsonString);
+                Log.Information($"Loaded {RestaurantList.Count} restaurants from {filePath}");
+            }
+            else
+            {
+                Log.Warning($"File {filePath} does not exist");
             }
         }
 

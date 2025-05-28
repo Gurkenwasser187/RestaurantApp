@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RestaurantApp"
         mc:Ignorable="d"
         Title="SearchWindow" Height="450" Width="800">
-    <Grid Background="Black" >
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="4*"/>

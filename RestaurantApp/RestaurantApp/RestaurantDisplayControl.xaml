@@ -7,24 +7,34 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid>
+    <Grid Background="White" Width="800" >
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="9*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Label x:Name="LabelName" Content="Name" FontSize="30" Grid.Row="1" HorizontalAlignment="Center"/>
         <Label x:Name="LabelArt" Content="Art" FontSize="15" Grid.Row="2" VerticalAlignment="Center"/>
         <Label x:Name="LabelOrt" Content="Ort" FontSize="15" Grid.Row="3" VerticalAlignment="Center"/>
         <Label x:Name="LabelBewertungen" Content="Bewertungen" FontSize="15" Grid.Row="4" VerticalAlignment="Center"/>
         <Button x:Name="ButtonLike" Content="Liken" FontSize="15" Grid.Row="5"/>
         <Label Content="Link" FontSize="15" Grid.Row="6" VerticalAlignment="Center"/>
+=======
+        <Border Background="LightGray" Grid.Row="1"/>
+        <Label x:Name="LabelName" Content="Name" FontSize="30" Grid.Row="1" HorizontalAlignment="Center" />
+        <Label x:Name="LabelTypeOfFood" Content="Art:" FontSize="15" Grid.Row="2" VerticalAlignment="Center"/>
+        <Label x:Name="LabelLocation" Content="Ort:" FontSize="15" Grid.Row="3" VerticalAlignment="Center"/>
+        <Label x:Name="LabelRating" Content="Bewertungen:" FontSize="15" Grid.Row="4" VerticalAlignment="Center"/>
+        <Button x:Name="ButtonLike" Content="👍" FontSize="15" Grid.Row="5" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0px" Height="26" VerticalAlignment="Bottom" />
+        <Label x:Name="LabelLink" Content="Link" FontSize="15" Grid.Row="6" VerticalAlignment="Center"/>
+        <Button x:Name="ButtonComment" Content="💭" Grid.Row="8" Background="Transparent" BorderThickness="0px" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+>>>>>>> afbe7b202f37d3f16d5901edd61d69833bae1e0d
 
     </Grid>
                

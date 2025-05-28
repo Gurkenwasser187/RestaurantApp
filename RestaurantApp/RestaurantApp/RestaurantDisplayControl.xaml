@@ -20,9 +20,9 @@
         </Grid.RowDefinitions>
 
         <Label x:Name="LabelName" Content="Name" FontSize="30" Grid.Row="1" HorizontalAlignment="Center"/>
-        <Label Content="Art" FontSize="15" Grid.Row="2" VerticalAlignment="Center"/>
-        <Label Content="Ort" FontSize="15" Grid.Row="3" VerticalAlignment="Center"/>
-        <Label Content="Bewertungen" FontSize="15" Grid.Row="4" VerticalAlignment="Center"/>
+        <Label x:Name="LabelArt" Content="Art" FontSize="15" Grid.Row="2" VerticalAlignment="Center"/>
+        <Label x:Name="LabelOrt Content="Ort" FontSize="15" Grid.Row="3" VerticalAlignment="Center"/>
+        <Label x:Name="LabelBewertungen" Content="Bewertungen" FontSize="15" Grid.Row="4" VerticalAlignment="Center"/>
         <Button x:Name="ButtonLike" Content="Liken" FontSize="15" Grid.Row="5"/>
         <Label Content="Link" FontSize="15" Grid.Row="6" VerticalAlignment="Center"/>
 

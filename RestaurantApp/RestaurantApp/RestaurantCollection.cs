@@ -24,13 +24,8 @@ namespace RestaurantApp
 
         public void SavetoFile(string filePath)
         {
-            using (StreamWriter writer = new StreamWriter(filePath))
-            {
-                foreach (Restaurant restaurant in RestaurantList)
-                {
-                    // writer.WriteLine(restaurant.Serialize());
-                }
-            }
+            //Save to file in JSON format
+            
         }
 
         public void LoadFromFile(string filePath)

@@ -44,6 +44,7 @@ namespace RestaurantApp
                     Comment = restaurant.Comment,
                     NameOfImmage = restaurant.NameOfImmage
                 });
+                WarpPanelRestaurants.Children.Add(restaurantDisplayList.Last());
             }
 
         }

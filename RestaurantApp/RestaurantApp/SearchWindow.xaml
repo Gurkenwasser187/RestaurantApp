@@ -9,9 +9,8 @@
     <Grid Background="Black" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -49,14 +48,14 @@
 
         </WrapPanel>
 
-        
+        <WrapPanel x:Name="WarpPanelRestaurants" Grid.Row="1"></WrapPanel>
 
 
 
-        
-        
-        
-        
+
+
+
+
 
 
 

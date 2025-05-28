@@ -8,7 +8,7 @@
              Margin="10"
              BorderBrush="Black"
              BorderThickness="5"
-             d:DesignHeight="450" d:DesignWidth="450">
+             d:DesignHeight="450" d:DesignWidth="455">
 
     <Grid Background="White" Width="450" Height="450">
 
@@ -29,12 +29,21 @@
         <Label x:Name="LabelLocation" Content="Ort:" FontSize="15" Grid.Row="3" VerticalAlignment="Center"/>
         <Label x:Name="LabelRating" Content="Bewertungen:" FontSize="15" Grid.Row="4" VerticalAlignment="Center"/>
         <Button x:Name="ButtonLike" Content="👍" FontSize="15" Grid.Row="5" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0px" Height="26" VerticalAlignment="Bottom" />
-        <Label x:Name="LabelLink" Content="Link" FontSize="15" Grid.Row="6" VerticalAlignment="Center"/>
+        <Label x:Name="LabelLink" Content="Link" FontSize="15" Grid.Row="6" VerticalAlignment="Center" />
+
         <Button x:Name="ButtonComment" Content="💭" Grid.Row="8" Background="Transparent" BorderThickness="0px" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
+        <WrapPanel Grid.Row="4" HorizontalAlignment="Right">
+            <Label x:Name="StarOne" Content="★" Foreground="Gray" FontSize="15" VerticalAlignment="Top" />
+            <Label x:Name="StarTwo" Content="★" Foreground="Gray" FontSize="15" VerticalAlignment="Top" />
+            <Label x:Name="StarThree" Content="★" Foreground="Gray" FontSize="15" VerticalAlignment="Top" />
+            <Label x:Name="StarFour" Content="★" Foreground="Gray" FontSize="15" VerticalAlignment="Top" />
+            <Label x:Name="StarFive" Content="★" Foreground="Gray" FontSize="15" VerticalAlignment="Top" />
+        </WrapPanel>
+        
     </Grid>
-               
-    
-    
-    
+
+
+
+
 </UserControl>

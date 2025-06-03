@@ -39,7 +39,7 @@
            />
 
             <ComboBox x:Name="ComboboxSearchCritics" Background="Yellow"
-                 Width="90" Height="30">
+                 Width="90" Height="30" SelectionChanged="ComboboxSearchCritics_SelectionChanged">
                 <ComboBoxItem Content="A-Z" Background="Yellow"/>
                 <ComboBoxItem Content="Z-A" Background="Yellow"/>
                 <ComboBoxItem Content="Beste Bewertung-Niedrigste Bewertung" Background="Yellow"/>

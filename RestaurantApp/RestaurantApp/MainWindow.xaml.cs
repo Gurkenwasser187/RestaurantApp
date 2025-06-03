@@ -35,5 +35,12 @@ namespace RestaurantApp
             searchWindow.Show();
             this.Close();
         }
+
+        private void ButtonLikes_Click(object sender, RoutedEventArgs e)
+        {
+            MyFavouritesWindow myFavouritesWindow = new MyFavouritesWindow();
+            myFavouritesWindow.Show();
+            this.Close();
+        }
     }
 }

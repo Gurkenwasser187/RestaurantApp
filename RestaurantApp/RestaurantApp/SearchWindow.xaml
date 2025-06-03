@@ -5,55 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RestaurantApp"
         mc:Ignorable="d"
-        Title="SearchWindow" Height="450" Width="800">
+        WindowStyle="None"
+        WindowState="Maximized"
+        Title="SearchWindow">
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="4*"/>
-
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Background="Yellow"/>
 
 
-        <Border Background="Yellow" Grid.Row="0" Grid.Column="0"/>
+        <Viewbox Grid.Row="0" Stretch="Uniform">
+            <Grid>
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button x:Name="BackToMainWindow" Content="🏠" FontSize="20"
+                    Background="Transparent" BorderThickness="0" Click="BackToMainWindow_Click" Margin="5"/>
 
+                    <TextBox x:Name="TextboxSearchBar" Background="Yellow" BorderBrush="Black" 
+                        BorderThickness="2" Width="400" Height="20" VerticalAlignment="Top" Margin="15"/>
 
-        <WrapPanel HorizontalAlignment="Center">
+                    <Label Content="🔍" FontSize="20" Margin="5"/>
+                    <Label Content="Sortieren Nach:" FontSize="15" VerticalAlignment="Center" FontFamily="Britannic"/>
 
-            <Button x:Name="BackToMainWindow" Content="🏠" FontSize="20" Background="Transparent" BorderThickness="0" Click="BackToMainWindow_Click">
+                    <ComboBox x:Name="ComboboxSearchCritics" Background="Yellow" Width="90" Height="30" Margin="5">
+                        <ComboBoxItem Content="A-Z" Background="Yellow"/>
+                        <ComboBoxItem Content="Z-A" Background="Yellow"/>
+                        <ComboBoxItem Content="Beste Bewertung-Niedrigste Bewertung" Background="Yellow"/>
 
-            </Button>
-
-            <TextBox x:Name="TextboxSearchBar" Background="Yellow" BorderBrush="Black" 
-           BorderThickness="2" Width="400" Height="20" VerticalAlignment="Top" 
-           Margin="15" />
-
-            <Label Content="🔍" FontSize="20" Margin="5"/>
-
-
-            <Label 
-               Content="Sortieren Nach:" FontSize="15"  
-               VerticalAlignment="Center" FontFamily="Britannic"
-           />
-
-            <ComboBox x:Name="ComboboxSearchCritics" Background="Yellow"
-                 Width="90" Height="30">
-                <ComboBoxItem Content="A-Z" Background="Yellow"/>
-                <ComboBoxItem Content="Z-A" Background="Yellow"/>
-                <ComboBoxItem Content="Beste Bewertung-Niedrigste Bewertung" Background="Yellow"/>
-                <ComboBoxItem Content="" Background="Yellow"/>
-            </ComboBox>
-
-
-
-        </WrapPanel>
+                    </ComboBox>
+                </WrapPanel>
+            </Grid>
+        </Viewbox>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <WrapPanel x:Name="WarpPanelRestaurants" HorizontalAlignment="Center" />
         </ScrollViewer>
-
-
     </Grid>
 </Window>

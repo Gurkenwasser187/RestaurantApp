@@ -44,9 +44,14 @@ namespace RestaurantApp
             }
         }
 
-        public void SortByName()
+        public void SortByNameAZ()
         {
             RestaurantList = RestaurantList.OrderBy(r => r.Name).ToList();
+        }
+
+        public void SortByNameZA()
+        {
+            RestaurantList = RestaurantList.OrderByDescending(r => r.Name).ToList();
         }
 
         public void SortByKindOfFood()

@@ -42,11 +42,22 @@ namespace RestaurantApp
             LabelName.Content = Name;
             LabelTypeOfFood.Content = KindOfFood;
             LabelLocation.Content = Address;
-            LabelRating.Content = Rating.ToString("0.0");
             LabelLink.Content = Link;
+            StarLabel.Content = new string('★', (int)Rating) + new string('☆', 5 - (int)Rating);
 
         }
 
+        private void ButtonCopyLink_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Link))
+            {
+                Clipboard.SetText(Link);
+            }
+        }
 
+        private void ButtonLike_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

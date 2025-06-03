@@ -22,28 +22,16 @@ namespace RestaurantApp
     {
         private string filePath = "restaurant_data.txt";
         private List<RestaurantDisplay> restaurantDisplayList = new List<RestaurantDisplay>();
+        private RestaurantCollection restaurantCollection;
 
         public SearchWindow()
         {
             InitializeComponent();
 
-            RestaurantCollection restaurantCollection = new RestaurantCollection();
+            restaurantCollection = new RestaurantCollection();
             restaurantCollection.LoadFromFile(filePath);
 
-
-            foreach (Restaurant restaurant in restaurantCollection.RestaurantList)
-            {
-                restaurantDisplayList.Add(new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood, restaurant.Address, restaurant.Rating, restaurant.Link)
-                {
-                    Comment = restaurant.Comment,
-                    NameOfImmage = restaurant.NameOfImmage
-
-                    
-                });
-                Log.Debug($"{restaurant.Name} | {restaurant.KindOfFood} | {restaurant.Address} | {restaurant.Rating} | {restaurant.Link} added to display list");
-                WarpPanelRestaurants.Children.Add(restaurantDisplayList.Last());
-            }
-
+            DisplayRestaurants();
         }
 
         private void BackToMainWindow_Click(object sender, RoutedEventArgs e)
@@ -51,6 +39,38 @@ namespace RestaurantApp
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+
+        private void ComboboxSearchCritics_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (ComboboxSearchCritics.SelectedIndex)
+            {
+                case 0:
+                    restaurantCollection.SortByNameAZ();
+                    break;
+                case 1:
+                    restaurantCollection.SortByNameZA();
+                    break;
+                case 2:
+                    restaurantCollection.SortByRating();
+                    break;
+            }
+            DisplayRestaurants();
+        }
+
+        public void DisplayRestaurants()
+        {
+            WarpPanelRestaurants.Children.Clear();
+            foreach (Restaurant restaurant in restaurantCollection.RestaurantList)
+            {
+                restaurantDisplayList.Add(new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood, restaurant.Address, restaurant.Rating, restaurant.Link)
+                {
+                    Comment = restaurant.Comment,
+                    NameOfImmage = restaurant.NameOfImmage
+                });
+                Log.Debug($"{restaurant.Name} | {restaurant.KindOfFood} | {restaurant.Address} | {restaurant.Rating} | {restaurant.Link} added to display list");
+                WarpPanelRestaurants.Children.Add(restaurantDisplayList.Last());
+            }
         }
     }
 }

@@ -23,7 +23,7 @@
         <WrapPanel HorizontalAlignment="Center">
 
             <Button x:Name="BackToMainWindow" Content="🏠" FontSize="20" Background="Transparent" BorderThickness="0" Click="BackToMainWindow_Click">
-              
+
             </Button>
 
             <TextBox x:Name="TextboxSearchBar" Background="Yellow" BorderBrush="Black" 
@@ -46,20 +46,13 @@
                 <ComboBoxItem Content="" Background="Yellow"/>
             </ComboBox>
 
-            
+
 
         </WrapPanel>
 
-        <WrapPanel x:Name="WarpPanelRestaurants" Grid.Row="1"></WrapPanel>
-
-
-
-
-
-
-
-
-
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <WrapPanel x:Name="WarpPanelRestaurants" HorizontalAlignment="Center" />
+        </ScrollViewer>
 
 
     </Grid>

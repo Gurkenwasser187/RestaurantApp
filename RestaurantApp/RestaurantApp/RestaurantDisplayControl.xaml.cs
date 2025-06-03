@@ -28,6 +28,7 @@ namespace RestaurantApp
         public string Link { get; set; }
         public string? Comment { get; set; }
         public string? NameOfImmage { get; set; }
+        public Boolean IsLiked { get; set; } = false;
 
         public RestaurantDisplay(string name, string kindOfFood, string address, double rating, string link)
         {
@@ -44,7 +45,6 @@ namespace RestaurantApp
             LabelLocation.Content = Address;
             LabelLink.Content = Link;
             StarLabel.Content = new string('★', (int)Rating) + new string('☆', 5 - (int)Rating);
-
         }
 
         private void ButtonCopyLink_Click(object sender, RoutedEventArgs e)
@@ -57,7 +57,15 @@ namespace RestaurantApp
 
         private void ButtonLike_Click(object sender, RoutedEventArgs e)
         {
-
+            IsLiked = !IsLiked;
+            if (IsLiked)
+            {
+                ButtonLike.Background = Brushes.LightGreen;
+            }
+            else
+            {
+                ButtonLike.Background = Brushes.Transparent;
+            }
         }
     }
 }

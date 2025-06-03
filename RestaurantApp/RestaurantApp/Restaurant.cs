@@ -17,5 +17,7 @@ namespace RestaurantApp
         public string Link { get; set; }
         public string? Comment { get; set; }
         public string? NameOfImmage { get; set; }
+        public Boolean IsLiked { get; set; } = false;
+
     }
 }

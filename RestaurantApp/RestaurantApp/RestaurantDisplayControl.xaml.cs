@@ -27,16 +27,18 @@ namespace RestaurantApp
         public double Rating { get; set; }
         public string Link { get; set; }
         public string? Comment { get; set; }
-        public string? NameOfImmage { get; set; }
-        public Boolean IsLiked { get; set; } = false;
 
-        public RestaurantDisplay(string name, string kindOfFood, string address, double rating, string link)
+        public string? NameOfImmage { get; set; }
+        public Boolean IsLiked { get; set; }
+
+        public RestaurantDisplay(string name, string kindOfFood, string address, double rating, string link, bool isliked)
         {
             Name = name;
             KindOfFood = kindOfFood;
             Address = address;
             Rating = rating;
             Link = link;
+            IsLiked = isliked;
 
             InitializeComponent();
             Log.Debug($"{Name} | {KindOfFood} | {Address} | {Rating} | {Link} Display configured");
@@ -45,6 +47,11 @@ namespace RestaurantApp
             LabelLocation.Content = Address;
             LabelLink.Content = Link;
             StarLabel.Content = new string('★', (int)Rating) + new string('☆', 5 - (int)Rating);
+
+            if (IsLiked)
+            {
+                ButtonLike.Background = Brushes.LightGreen;
+            }
         }
 
         private void ButtonCopyLink_Click(object sender, RoutedEventArgs e)

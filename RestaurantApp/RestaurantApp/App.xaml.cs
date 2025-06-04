@@ -9,6 +9,6 @@ namespace RestaurantApp
     /// </summary>
     public partial class App : Application
     {
-    }
 
+    }
 }

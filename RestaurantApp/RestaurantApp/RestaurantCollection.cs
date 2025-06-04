@@ -44,6 +44,18 @@ namespace RestaurantApp
             }
         }
 
+        public void SaveToFile(string filePath)
+        {
+            foreach (var restaurant in RestaurantList)
+            {
+                Log.Debug($"{restaurant.IsLiked}");
+            }
+            string jsonString = JsonSerializer.Serialize(RestaurantList, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(filePath, jsonString);
+            
+            Log.Information($"Saved {RestaurantList.Count} restaurants to {filePath}");
+        }
+
         public void SortByNameAZ()
         {
             RestaurantList = RestaurantList.OrderBy(r => r.Name).ToList();

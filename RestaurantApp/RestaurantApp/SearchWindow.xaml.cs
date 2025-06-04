@@ -36,6 +36,17 @@ namespace RestaurantApp
 
         private void BackToMainWindow_Click(object sender, RoutedEventArgs e)
         {
+            Log.Information("Back to Main Window");
+            int index = 0;
+            foreach (RestaurantDisplay restaurantDisplay in restaurantDisplayList)
+            {
+                restaurantCollection.RestaurantList[index].IsLiked = restaurantDisplay.IsLiked;
+                Log.Debug($"{restaurantDisplay.Name} {restaurantDisplay.IsLiked}");
+                Log.Debug($"{restaurantCollection.RestaurantList[index].Name} {restaurantCollection.RestaurantList[index].IsLiked}");
+                index++;
+            }
+            restaurantCollection.SaveToFile(filePath);
+
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
@@ -63,7 +74,7 @@ namespace RestaurantApp
             WarpPanelRestaurants.Children.Clear();
             foreach (Restaurant restaurant in restaurantCollection.RestaurantList)
             {
-                restaurantDisplayList.Add(new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood, restaurant.Address, restaurant.Rating, restaurant.Link)
+                restaurantDisplayList.Add(new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood, restaurant.Address, restaurant.Rating, restaurant.Link, restaurant.IsLiked)
                 {
                     Comment = restaurant.Comment,
                     NameOfImmage = restaurant.NameOfImmage

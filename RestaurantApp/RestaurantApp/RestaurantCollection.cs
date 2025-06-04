@@ -47,16 +47,19 @@ namespace RestaurantApp
         public void SortByNameAZ()
         {
             RestaurantList = RestaurantList.OrderBy(r => r.Name).ToList();
+            Log.Information("Sorted restaurants by name A-Z");
         }
 
         public void SortByNameZA()
         {
             RestaurantList = RestaurantList.OrderByDescending(r => r.Name).ToList();
+            Log.Information("Sorted restaurants by name Z-A");
         }
 
         public void SortByKindOfFood()
         {
             RestaurantList = RestaurantList.OrderBy(r => r.KindOfFood).ToList();
+            Log.Information("Sorted restaurants by kind of food");
         }
 
         public void SortByDistence()
@@ -68,6 +71,6 @@ namespace RestaurantApp
         {
             RestaurantList = RestaurantList.OrderBy(r => r.Rating).ToList();
             RestaurantList.Reverse();
-        }
+            Log.Information("Sorted restaurants by rating");        }
     }
 }

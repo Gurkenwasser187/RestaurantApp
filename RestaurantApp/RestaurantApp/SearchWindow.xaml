@@ -33,7 +33,7 @@
                         <ComboBoxItem Content="A-Z" Background="Yellow"/>
                         <ComboBoxItem Content="Z-A" Background="Yellow"/>
                         <ComboBoxItem Content="Beste Bewertung-Niedrigste Bewertung" Background="Yellow"/>
-
+                        <ComboBoxItem Content="Essensart A-Z" Background="Yellow"/>
                     </ComboBox>
                 </WrapPanel>
             </Grid>

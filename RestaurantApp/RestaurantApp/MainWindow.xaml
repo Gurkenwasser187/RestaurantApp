@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RestaurantApp"
         mc:Ignorable="d"
+        WindowStyle="None"
+        WindowState="Maximized"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.35*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -25,7 +28,6 @@
         <Button x:Name="ButtonLikes" Content="❤️" FontSize="45" Background="Transparent" BorderThickness="0" Grid.Row="2" Click="ButtonLikes_Click"/>
         <Button x:Name="ButtonTopThree" Content="🏆" Background="Transparent" FontSize="45" Grid.Row="3" BorderThickness="0"/>
         <Button x:Name="ButtonComments" FontFamily="Segoe MDL2 Assets" FontSize="45" Content="&#xE8BD;" ToolTip="Nachricht senden" Background="Transparent" BorderThickness="0" Grid.Row="4" />
-
-
+        <Button x:Name="ButtonExit" FontSize="45" Content="✖️" Click="CloseButton_Click" Background="Transparent" BorderThickness="0" Grid.Row="5"/>
     </Grid>
 </Window>

@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Serilog;
+using System.IO;
 
 namespace RestaurantApp
 {
@@ -25,7 +26,11 @@ namespace RestaurantApp
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .WriteTo.Console()
-                .WriteTo.File("Restaurant.log", rollingInterval: RollingInterval.Day)
+                .WriteTo.File(
+                    "Restaurant.log",
+                    rollOnFileSizeLimit: true,
+                    fileSizeLimitBytes: 10485760
+                )
                 .CreateLogger();
         }
 

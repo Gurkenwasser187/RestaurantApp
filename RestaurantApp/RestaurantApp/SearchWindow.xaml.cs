@@ -65,6 +65,9 @@ namespace RestaurantApp
                 case 2:
                     restaurantCollection.SortByRating();
                     break;
+                case 3:
+                    restaurantCollection.SortByKindOfFood();
+                    break;
             }
             DisplayRestaurants();
         }
@@ -72,6 +75,7 @@ namespace RestaurantApp
         public void DisplayRestaurants()
         {
             WarpPanelRestaurants.Children.Clear();
+            restaurantDisplayList.Clear();
             foreach (Restaurant restaurant in restaurantCollection.RestaurantList)
             {
                 restaurantDisplayList.Add(new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood, restaurant.Address, restaurant.Rating, restaurant.Link, restaurant.IsLiked)
@@ -81,6 +85,29 @@ namespace RestaurantApp
                 });
                 Log.Debug($"{restaurant.Name} | {restaurant.KindOfFood} | {restaurant.Address} | {restaurant.Rating} | {restaurant.Link} added to display list");
                 WarpPanelRestaurants.Children.Add(restaurantDisplayList.Last());
+            }
+        }
+
+        private void TextboxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            string searchText = TextboxSearchBar.Text.ToLower();
+            WarpPanelRestaurants.Children.Clear();
+            restaurantDisplayList.Clear();
+            foreach (Restaurant restaurant in restaurantCollection.RestaurantList)
+            {
+                if (restaurant.Name.ToLower().Contains(searchText) ||
+                    restaurant.KindOfFood.ToLower().Contains(searchText) ||
+                    restaurant.Address.ToLower().Contains(searchText))
+                {
+                    RestaurantDisplay display = new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood, restaurant.Address, restaurant.Rating, restaurant.Link, restaurant.IsLiked)
+                    {
+                        Comment = restaurant.Comment,
+                        NameOfImmage = restaurant.NameOfImmage
+                    };
+                    restaurantDisplayList.Add(display);
+                    WarpPanelRestaurants.Children.Add(display);
+                }
             }
         }
     }

@@ -21,7 +21,7 @@
             <Grid>
                 <WrapPanel HorizontalAlignment="Center">
                     <Button x:Name="BackToMainWindow" Content="🏠" FontSize="20"
-            Background="Transparent" BorderThickness="0" Click="BackToMainWindow_Click" Margin="5"/>
+                    Background="Transparent" BorderThickness="0" Margin="5"/>
 
                     <TextBox x:Name="TextboxSearchBar" Background="Yellow" BorderBrush="Black" 
                 BorderThickness="2" Width="400" Height="20" VerticalAlignment="Top" Margin="15"/>

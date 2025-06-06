@@ -83,6 +83,7 @@ namespace RestaurantApp
         {
             RestaurantList = RestaurantList.OrderBy(r => r.Rating).ToList();
             RestaurantList.Reverse();
-            Log.Information("Sorted restaurants by rating");        }
+            Log.Information("Sorted restaurants by rating");
+        }
     }
 }

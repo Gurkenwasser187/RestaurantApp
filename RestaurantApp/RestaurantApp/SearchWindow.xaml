@@ -24,7 +24,7 @@
                     Background="Transparent" BorderThickness="0" Click="BackToMainWindow_Click" Margin="5"/>
 
                     <TextBox x:Name="TextboxSearchBar" Background="Yellow" BorderBrush="Black" 
-                        BorderThickness="2" Width="400" Height="20" VerticalAlignment="Top" Margin="15"/>
+                        BorderThickness="2" Width="400" Height="20" VerticalAlignment="Top" Margin="15" TextChanged="TextboxSearchBar_TextChanged"/>
 
                     <Label Content="🔍" FontSize="20" Margin="5"/>
                     <Label Content="Sortieren Nach:" FontSize="15" VerticalAlignment="Center" FontFamily="Britannic"/>

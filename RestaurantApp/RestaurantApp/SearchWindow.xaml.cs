@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Serilog;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 
 namespace RestaurantApp
 {
@@ -23,13 +26,20 @@ namespace RestaurantApp
         private string filePath = "restaurant_data.txt";
         private List<RestaurantDisplay> restaurantDisplayList = new List<RestaurantDisplay>();
         private RestaurantCollection restaurantCollection;
+        ChromeOptions options = new ChromeOptions();
+
 
         public SearchWindow()
         {
             InitializeComponent();
 
+            // Setup Chrome options (headless if you don't need UI)
+            options.AddArgument("--headless");  // run in background
+            options.AddArgument("--window-size=1920,1080");
+
             restaurantCollection = new RestaurantCollection();
             restaurantCollection.LoadFromFile(filePath);
+
 
             DisplayRestaurants();
         }
@@ -81,7 +91,6 @@ namespace RestaurantApp
                 restaurantDisplayList.Add(new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood, restaurant.Address, restaurant.Rating, restaurant.Link, restaurant.IsLiked)
                 {
                     Comment = restaurant.Comment,
-                    NameOfImmage = restaurant.NameOfImmage
                 });
                 Log.Debug($"{restaurant.Name} | {restaurant.KindOfFood} | {restaurant.Address} | {restaurant.Rating} | {restaurant.Link} added to display list");
                 WarpPanelRestaurants.Children.Add(restaurantDisplayList.Last());
@@ -90,7 +99,6 @@ namespace RestaurantApp
 
         private void TextboxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-
             string searchText = TextboxSearchBar.Text.ToLower();
             WarpPanelRestaurants.Children.Clear();
             restaurantDisplayList.Clear();
@@ -103,11 +111,41 @@ namespace RestaurantApp
                     RestaurantDisplay display = new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood, restaurant.Address, restaurant.Rating, restaurant.Link, restaurant.IsLiked)
                     {
                         Comment = restaurant.Comment,
-                        NameOfImmage = restaurant.NameOfImmage
+
                     };
                     restaurantDisplayList.Add(display);
                     WarpPanelRestaurants.Children.Add(display);
                 }
+            }
+        }
+
+        private void ButtonReloadImages_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Restaurant restaurant in restaurantCollection.RestaurantList)
+            {
+                try
+                {
+                    SaveScreenshotToFile(restaurant.Link, restaurant.Name);
+                }
+                catch
+                {
+                    Log.Warning($"Failed to save screenshot for {restaurant.Name} at {restaurant.Link}");
+                }
+            }
+        }
+
+        private void SaveScreenshotToFile(string linkToWebside, string restaurantName)
+        {
+            using (IWebDriver driver = new ChromeDriver(options))
+            {
+                driver.Navigate().GoToUrl(linkToWebside);
+                System.Threading.Thread.Sleep(2000);
+
+                Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+                string path = $"Restaurant_Imgs/{restaurantName}.png";
+                screenshot.SaveAsFile(path);
+
+                Log.Debug($"Screenshot of {restaurantName} saved to: {path}");
             }
         }
     }

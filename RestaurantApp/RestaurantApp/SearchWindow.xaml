@@ -35,6 +35,9 @@
                         <ComboBoxItem Content="Beste Bewertung-Niedrigste Bewertung" Background="Yellow"/>
                         <ComboBoxItem Content="Essensart A-Z" Background="Yellow"/>
                     </ComboBox>
+                    
+                    <Button x:Name="ButtonReloadImages" Content="🔄" FontSize="20" Background="Transparent" BorderThickness="0" Margin="5" Click="ButtonReloadImages_Click"/>
+
                 </WrapPanel>
             </Grid>
         </Viewbox>

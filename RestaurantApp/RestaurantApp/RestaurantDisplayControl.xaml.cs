@@ -27,8 +27,6 @@ namespace RestaurantApp
         public double Rating { get; set; }
         public string Link { get; set; }
         public string? Comment { get; set; }
-
-        public string? NameOfImmage { get; set; }
         public Boolean IsLiked { get; set; }
 
         public RestaurantDisplay(string name, string kindOfFood, string address, double rating, string link, bool isliked)
@@ -47,6 +45,23 @@ namespace RestaurantApp
             LabelLocation.Content = Address;
             LabelLink.Content = Link;
             StarLabel.Content = new string('★', (int)Rating) + new string('☆', 5 - (int)Rating);
+
+            //ImageRestaurant.Source = new BitmapImage(new Uri($"Restaurant_Imgs/{Name}.png", UriKind.Relative));
+
+            ImageSource RestaurantImage = new BitmapImage();
+
+            string imagePath = $"Restaurant_Imgs/{Name}.png";
+            if (System.IO.File.Exists(imagePath))
+            {
+                Log.Debug($"Image found: {imagePath} | {name}");
+                RestaurantImage = new BitmapImage(new Uri(imagePath, UriKind.Relative));
+                ImageRestaurant.Source = RestaurantImage;
+            }
+            else
+            {
+                Log.Warning($"Image not found: {imagePath} | {name}");
+            }
+
 
             if (IsLiked)
             {

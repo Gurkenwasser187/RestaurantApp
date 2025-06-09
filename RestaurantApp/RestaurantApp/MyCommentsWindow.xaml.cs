@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace RestaurantApp
 {
     /// <summary>
-    /// Interaction logic for MyFavouritesWindow.xaml
+    /// Interaction logic for MyCommentsWindow.xaml
     /// </summary>
-    public partial class MyFavouritesWindow : Window
+    public partial class MyCommentsWindow : Window
     {
-        public MyFavouritesWindow()
+        public MyCommentsWindow()
         {
             InitializeComponent();
-        }
-
-        private void BackToMainWindow_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
         }
     }
 }

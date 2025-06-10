@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Serilog;
+using System.IO;
 
 namespace RestaurantApp
 {
@@ -21,12 +22,6 @@ namespace RestaurantApp
         public MainWindow()
         {
             InitializeComponent();
-
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.Console()
-                .WriteTo.File("Restaurant.log", rollingInterval: RollingInterval.Day)
-                .CreateLogger();
         }
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)

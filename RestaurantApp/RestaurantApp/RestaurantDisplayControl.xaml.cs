@@ -57,7 +57,6 @@ namespace RestaurantApp
             }
             else
             {
-                ImageRestaurant.Source = new ImageSourceConverter().ConvertFromString("Restaurant_Imgs/NoImageFuond.png") as ImageSource;
                 Log.Warning($"Image not found: {imagePath} | {name}");
             }
 

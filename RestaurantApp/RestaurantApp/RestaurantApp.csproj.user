@@ -19,6 +19,9 @@
     <Compile Update="SearchWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WindowWriteComment.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -34,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SearchWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WindowWriteComment.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

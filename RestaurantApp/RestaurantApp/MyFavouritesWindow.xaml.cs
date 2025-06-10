@@ -105,7 +105,8 @@ namespace RestaurantApp
             }
         }
 
-        private void BackToMainWindow_Click(object sender, RoutedEventArgs e)
+
+        private void MyFavouritesWindowBackToMainWindow_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();

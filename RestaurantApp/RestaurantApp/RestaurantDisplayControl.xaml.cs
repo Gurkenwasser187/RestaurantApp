@@ -29,7 +29,7 @@ namespace RestaurantApp
         public string? Comment { get; set; }
         public Boolean IsLiked { get; set; }
 
-        public RestaurantDisplay(string name, string kindOfFood, string address, double rating, string link, bool isliked)
+        public RestaurantDisplay(string name, string kindOfFood, string address, double rating, string link, bool isliked, string? comment)
         {
             Name = name;
             KindOfFood = kindOfFood;
@@ -37,6 +37,7 @@ namespace RestaurantApp
             Rating = rating;
             Link = link;
             IsLiked = isliked;
+            Comment = comment;
 
             InitializeComponent();
             Log.Debug($"{Name} | {KindOfFood} | {Address} | {Rating} | {Link} Display configured");
@@ -86,6 +87,14 @@ namespace RestaurantApp
             {
                 ButtonLike.Background = Brushes.Transparent;
             }
+        }
+
+        private void ButtonComment_Click(object sender, RoutedEventArgs e)
+        {
+            WindowWriteComment windowWriteComment = new WindowWriteComment();
+            windowWriteComment.Show();
+            
+            
         }
     }
 }

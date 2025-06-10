@@ -35,12 +35,12 @@
             <Button x:Name="ButtonCopyLink" Content="🔗" FontSize="15" Background="Transparent" BorderThickness="0px" Height="26" VerticalAlignment="Bottom" Click="ButtonCopyLink_Click"/>
         </WrapPanel>
 
-        <Button x:Name="ButtonComment" Content="💭" Grid.Row="8" Background="Transparent" BorderThickness="0px" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button x:Name="ButtonComment" Content="💭" Grid.Row="7" Background="Transparent" BorderThickness="0px" HorizontalAlignment="Left" Margin="0,0,0,6" Height="18" VerticalAlignment="Bottom" Click="ButtonComment_Click"/>
 
         <WrapPanel Grid.Row="4" HorizontalAlignment="Left">
             <Label x:Name="StarLabel" Content="★★★★★" Foreground="Yellow" FontSize="15" VerticalAlignment="Top" />
         </WrapPanel>
-        
+
     </Grid>
 
 

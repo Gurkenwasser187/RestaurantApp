@@ -15,6 +15,7 @@ using Serilog;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.DevTools.V135.FileSystem;
 
 namespace RestaurantApp
 {
@@ -33,13 +34,10 @@ namespace RestaurantApp
         {
             InitializeComponent();
 
-            // Setup Chrome options (headless if you don't need UI)
-            options.AddArgument("--headless");  // run in background
-            options.AddArgument("--window-size=1920,1080");
+            RemoveDuplicatesFromFile();
 
             restaurantCollection = new RestaurantCollection();
             restaurantCollection.LoadFromFile(filePath);
-
 
             DisplayRestaurants();
         }
@@ -111,7 +109,6 @@ namespace RestaurantApp
                     RestaurantDisplay display = new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood, restaurant.Address, restaurant.Rating, restaurant.Link, restaurant.IsLiked)
                     {
                         Comment = restaurant.Comment,
-
                     };
                     restaurantDisplayList.Add(display);
                     WarpPanelRestaurants.Children.Add(display);
@@ -136,16 +133,63 @@ namespace RestaurantApp
 
         private void SaveScreenshotToFile(string linkToWebside, string restaurantName)
         {
-            using (IWebDriver driver = new ChromeDriver(options))
+            if (System.IO.File.Exists($"Restaurant_Imgs/{restaurantName}.png"))
             {
-                driver.Navigate().GoToUrl(linkToWebside);
-                System.Threading.Thread.Sleep(2000);
+                using (IWebDriver driver = new ChromeDriver(options))
+                {
+                    driver.Navigate().GoToUrl(linkToWebside);
+                    System.Threading.Thread.Sleep(2000);
 
-                Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
-                string path = $"Restaurant_Imgs/{restaurantName}.png";
-                screenshot.SaveAsFile(path);
+                    Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+                    string path = $"Restaurant_Imgs/{restaurantName}.png";
+                    screenshot.SaveAsFile(path);
 
-                Log.Debug($"Screenshot of {restaurantName} saved to: {path}");
+                    Log.Debug($"Screenshot of {restaurantName} saved to: {path}");
+                }
+            }
+            else
+            {
+                Log.Debug($"Image for {restaurantName} already exists, skipping screenshot save.");
+            }
+        }
+
+        public void RemoveDuplicatesFromFile()
+        {
+            if (!System.IO.File.Exists(filePath))
+            {
+                Log.Warning($"File {filePath} does not exist.");
+                return;
+            }
+
+            try
+            {
+                string json = System.IO.File.ReadAllText(filePath);
+                var restaurants = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(json);
+
+                if (restaurants == null)
+                {
+                    Log.Warning("No restaurants found in the file.");
+                    return;
+                }
+
+                var uniqueRestaurants = restaurants
+                    .GroupBy(r => r.Name, StringComparer.OrdinalIgnoreCase)
+                    .Select(g => g.First())
+                    .ToList();
+
+                int duplicatesCount = restaurants.Count - uniqueRestaurants.Count;
+
+                string newJson = System.Text.Json.JsonSerializer.Serialize(uniqueRestaurants, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+                System.IO.File.WriteAllText(filePath, newJson);
+
+                if (duplicatesCount > 0)
+                    Log.Information($"Removed {duplicatesCount} duplicate restaurants from the file.");
+                else
+                    Log.Information("No duplicate restaurants found in the file.");
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"Error processing file: {ex.Message}");
             }
         }
     }

@@ -46,19 +46,17 @@ namespace RestaurantApp
             LabelLink.Content = Link;
             StarLabel.Content = new string('★', (int)Rating) + new string('☆', 5 - (int)Rating);
 
-            //ImageRestaurant.Source = new BitmapImage(new Uri($"Restaurant_Imgs/{Name}.png", UriKind.Relative));
-
             ImageSource RestaurantImage = new BitmapImage();
 
             string imagePath = $"Restaurant_Imgs/{Name}.png";
             if (System.IO.File.Exists(imagePath))
             {
                 Log.Debug($"Image found: {imagePath} | {name}");
-                RestaurantImage = new BitmapImage(new Uri(imagePath, UriKind.Relative));
-                ImageRestaurant.Source = RestaurantImage;
+                ImageRestaurant.Source = new ImageSourceConverter().ConvertFromString(imagePath) as ImageSource;
             }
             else
             {
+                ImageRestaurant.Source = new ImageSourceConverter().ConvertFromString("Restaurant_Imgs/NoImageFuond.png") as ImageSource;
                 Log.Warning($"Image not found: {imagePath} | {name}");
             }
 

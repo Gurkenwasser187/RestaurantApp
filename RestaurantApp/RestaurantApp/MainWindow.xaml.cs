@@ -22,16 +22,6 @@ namespace RestaurantApp
         public MainWindow()
         {
             InitializeComponent();
-
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.Console()
-                .WriteTo.File(
-                    "Restaurant.log",
-                    rollOnFileSizeLimit: true,
-                    fileSizeLimitBytes: 10485760
-                )
-                .CreateLogger();
         }
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +21,50 @@ namespace RestaurantApp
     /// </summary>
     public partial class WindowWriteComment : Window
     {
+        private static readonly string FilePath = "comments.json";
+
+        public static List<string> CommentsList = new List<string>();
+
+
+        public static void AddComment(string comment)
+        {
+            if (!string.IsNullOrWhiteSpace(comment))
+            {
+                CommentsList.Add(comment);
+                SaveCommentsToFile();
+            }
+        }
+
+
+        public static void SaveCommentsToFile()
+        {
+            try
+            {
+                var json = JsonSerializer.Serialize(CommentsList, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(FilePath, json);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Fehler beim Speichern der Kommentare: {ex.Message}");
+            }
+        }
+
+        public static void LoadCommentsFromFile()
+        {
+            try
+            {
+                if (File.Exists(FilePath))
+                {
+                    var json = File.ReadAllText(FilePath);
+                    CommentsList = JsonSerializer.Deserialize<List<string>>(json) ?? new List<string>();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Fehler beim Laden der Kommentare: {ex.Message}");
+            }
+        }
+
         public WindowWriteComment()
         {
             InitializeComponent();
@@ -26,6 +72,18 @@ namespace RestaurantApp
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        
+
+        private void ButtonPost_Click(object sender, RoutedEventArgs e)
+        {
+            string comment = TextBoxComment.Text;
+
+            AddComment(comment);
+
+            TextBoxComment.Clear();
             this.Close();
         }
     }

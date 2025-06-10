@@ -19,9 +19,32 @@ namespace RestaurantApp
     /// </summary>
     public partial class MyCommentsWindow : Window
     {
+
+        
+
         public MyCommentsWindow()
         {
             InitializeComponent();
+            LoadComments();
+
+
+        }
+
+
+        private void LoadComments(){
+            foreach (var comment in WindowWriteComment.CommentsList)
+            {
+               
+                ListBoxComments.Items.Add(comment);
+
+            }
+        }
+
+        private void CommentsBackToMainWindow_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

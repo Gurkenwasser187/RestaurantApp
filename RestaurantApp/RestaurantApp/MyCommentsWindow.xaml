@@ -9,6 +9,7 @@
         WindowState="Maximized"
         Title="MyCommentsWindow" Height="450" Width="800">
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -19,5 +20,10 @@
             <RowDefinition Height="2.5*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Grid.ColumnSpan="3" Background="Yellow"/>
+        <ListBox x:Name="ListBoxComments" Margin="10" Grid.Row="2" Grid.Column="1"/>
+        <Button x:Name="CommentsBackToMainWindow" Content="🏠" FontSize="20" Background="Transparent" BorderThickness="0" Margin="5" Click="CommentsBackToMainWindow_Click"/>
+
+        
+
     </Grid>
 </Window>

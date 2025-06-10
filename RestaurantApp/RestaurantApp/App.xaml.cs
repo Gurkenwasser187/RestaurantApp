@@ -21,6 +21,18 @@ namespace RestaurantApp
                     fileSizeLimitBytes: 10485760
                 )
                 .CreateLogger();
+
+         
+        
+        
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            
+            WindowWriteComment.LoadCommentsFromFile();
         }
     }
 }

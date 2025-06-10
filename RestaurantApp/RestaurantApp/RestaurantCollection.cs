@@ -35,11 +35,12 @@ namespace RestaurantApp
             {
                 string jsonString = File.ReadAllText(filePath);
 
-                RestaurantList = JsonSerializer.Deserialize<List<Restaurant>>(jsonString);
+                RestaurantList = JsonSerializer.Deserialize<List<Restaurant>>(jsonString) ?? new List<Restaurant>();
                 Log.Information($"Loaded {RestaurantList.Count} restaurants from {filePath}");
             }
             else
             {
+                RestaurantList = new List<Restaurant>();
                 Log.Warning($"File {filePath} does not exist");
             }
         }

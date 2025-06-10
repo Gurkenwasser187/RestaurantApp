@@ -42,5 +42,12 @@ namespace RestaurantApp
         {
             this.Close();
         }
+
+        private void ButtonComments_Click(object sender, RoutedEventArgs e)
+        {
+            MyCommentsWindow myCommentsWindow = new MyCommentsWindow();
+            myCommentsWindow.Show();
+            this.Close();
+        }
     }
 }

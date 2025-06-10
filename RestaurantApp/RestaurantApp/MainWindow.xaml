@@ -54,7 +54,7 @@
         <Button x:Name="ButtonSearch" FontFamily="Segoe MDL2 Assets" FontSize="45" Content="&#xE721;"  Background="LightGray" Grid.Row="2" Grid.Column="1" Click="ButtonSearch_Click" Margin="10" />
         <Button x:Name="ButtonLikes" Content="❤️" FontSize="45" Background="LightGray" Grid.Row="2" Click="ButtonLikes_Click" Margin="10"/>
         <Button x:Name="ButtonTopThree" Content="🏆" FontSize="45" Grid.Row="2" Grid.Column="2" Background="LightGray" Margin="10"/>
-        <Button x:Name="ButtonComments" FontFamily="Segoe MDL2 Assets" FontSize="45" Content="&#xE8BD;" Background="LightGray" Grid.Row="2" Grid.Column="5" Margin="10"/>
+        <Button x:Name="ButtonComments" FontFamily="Segoe MDL2 Assets" FontSize="45" Content="&#xE8BD;" Background="LightGray" Grid.Row="2" Grid.Column="5" Margin="10" Click="ButtonComments_Click"/>
         <Button x:Name="ButtonExit" FontSize="45" Content="✖️" Click="CloseButton_Click" Background="LightGray"  Grid.Row="2" Grid.Column="3" Margin="10"/>
     </Grid>
 </Window>

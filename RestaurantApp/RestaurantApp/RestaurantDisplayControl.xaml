@@ -40,10 +40,5 @@
         <WrapPanel Grid.Row="4" HorizontalAlignment="Left">
             <Label x:Name="StarLabel" Content="★★★★★" Foreground="Yellow" FontSize="15" VerticalAlignment="Top" />
         </WrapPanel>
-
     </Grid>
-
-
-
-
 </UserControl>

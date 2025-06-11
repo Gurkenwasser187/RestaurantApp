@@ -87,5 +87,10 @@ namespace RestaurantApp
             TextBoxComment.Clear();
             this.Close();
         }
+
+        private void CommentWrite_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBoxComment.Text = "";
+        }
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Serilog;
 
 namespace RestaurantApp
 {
@@ -45,7 +46,7 @@ namespace RestaurantApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Fehler beim Speichern der Kommentare: {ex.Message}");
+                Log.Warning($"Could not save comments | error: {ex.Message}");
             }
         }
 
@@ -61,7 +62,7 @@ namespace RestaurantApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Fehler beim Laden der Kommentare: {ex.Message}");
+                Log.Warning($"Could not load comments | error: {ex.Message}");
             }
         }
 

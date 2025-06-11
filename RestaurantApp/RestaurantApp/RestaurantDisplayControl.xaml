@@ -23,7 +23,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="ImageRestaurant" Grid.Row="0" Margin="5" Stretch="Uniform" Height="200"/>
+        <Image x:Name="ImageRestaurant" Grid.Row="0" Stretch="UniformToFill"   Height="200"/>
 
         <Border Background="LightGray" Grid.Row="1"/>
         <Label x:Name="LabelName" Content="Name" FontSize="30" Grid.Row="1" HorizontalAlignment="Center"/>

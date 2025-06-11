@@ -41,7 +41,6 @@ namespace RestaurantApp
 
             DisplayRestaurants();
         }
-
         private void BackToMainWindow_Click(object sender, RoutedEventArgs e)
         {
             Log.Information("Back to Main Window");

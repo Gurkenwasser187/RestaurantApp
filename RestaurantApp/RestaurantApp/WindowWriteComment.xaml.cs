@@ -22,57 +22,23 @@ namespace RestaurantApp
     /// </summary>
     public partial class WindowWriteComment : Window
     {
-        private static readonly string FilePath = "comments.json";
+        string CurrentRestaurantName;
 
-        public static List<string> CommentsList = new List<string>();
+        private readonly string FilePath = "restaurant_data.json";
 
-
-        public static void AddComment(string comment)
-        {
-            if (!string.IsNullOrWhiteSpace(comment))
-            {
-                CommentsList.Add(comment);
-                SaveCommentsToFile();
-            }
-        }
+        RestaurantCollection restaurantCollection = new RestaurantCollection();
 
 
-        public static void SaveCommentsToFile()
-        {
-            try
-            {
-                var json = JsonSerializer.Serialize(CommentsList, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(FilePath, json);
-            }
-            catch (Exception ex)
-            {
-                Log.Warning($"Could not save comments | error: {ex.Message}");
-            }
-        }
-
-        public static void LoadCommentsFromFile()
-        {
-            try
-            {
-                if (File.Exists(FilePath))
-                {
-                    var json = File.ReadAllText(FilePath);
-                    CommentsList = JsonSerializer.Deserialize<List<string>>(json) ?? new List<string>();
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Warning($"Could not load comments | error: {ex.Message}");
-            }
-        }
-
-        public WindowWriteComment()
+        public WindowWriteComment(string name)
         {
             InitializeComponent();
+            restaurantCollection.LoadFromFile(FilePath);
+            CurrentRestaurantName = name;
         }
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
+
             this.Close();
         }
 
@@ -80,11 +46,18 @@ namespace RestaurantApp
 
         private void ButtonPost_Click(object sender, RoutedEventArgs e)
         {
-            string comment = TextBoxComment.Text;
+            foreach(Restaurant restaurant in restaurantCollection.RestaurantList)
+            {
+                if(restaurant.Name == CurrentRestaurantName)
+                {
+                    restaurant.Comment = TextBoxComment.Text;
+                    
+                    break;
+                }
+            }
 
-            AddComment(comment);
+            restaurantCollection.SaveToFile(FilePath);
 
-            TextBoxComment.Clear();
             this.Close();
         }
 

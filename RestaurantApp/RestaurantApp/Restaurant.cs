@@ -18,5 +18,13 @@ namespace RestaurantApp
         public string? Comment { get; set; }
         public Boolean IsLiked { get; set; }
 
+
+        public Restaurant(string name,string? comment)
+        {
+            Name = name;
+            Comment = comment;
+
+        }
+
     }
 }

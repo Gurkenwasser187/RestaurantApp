@@ -9,7 +9,7 @@ using Serilog;
 
 namespace RestaurantApp
 {
-    class RestaurantCollection
+    public class RestaurantCollection
     {
         public List<Restaurant> RestaurantList { get; set; }
 

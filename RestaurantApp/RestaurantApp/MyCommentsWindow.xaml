@@ -10,20 +10,31 @@
         Title="MyCommentsWindow" Height="450" Width="800">
     <Grid>
         
+        
+        
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Grid.ColumnSpan="3" Background="Yellow"/>
-        <ListBox x:Name="ListBoxComments" Margin="10" Grid.Row="2" Grid.Column="1"/>
-        <Button x:Name="CommentsBackToMainWindow" Content="🏠" FontSize="20" Background="Transparent" BorderThickness="0" Margin="5" Click="CommentsBackToMainWindow_Click"/>
-
         
+        <Button x:Name="CommentsBackToMainWindow" Content="🏠" FontSize="35" Background="Transparent" BorderThickness="0" Margin="5" Click="CommentsBackToMainWindow_Click"/>
+        <ComboBox x:Name="MyCommentsComboboxSearchCritics" Background="Yellow" Width="150" Height="50" Margin="5" Grid.Column="2">
+            <ComboBoxItem Content="A-Z" Background="Yellow"/>
+            <ComboBoxItem Content="Z-A" Background="Yellow"/>
+        </ComboBox>
+
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="5" Grid.Row="1" Grid.Column="1">
+            <StackPanel x:Name="CommentsPanel" Orientation="Vertical" Margin="5" >
+            </StackPanel>
+        </ScrollViewer>
+
 
     </Grid>
 </Window>

@@ -31,13 +31,30 @@ namespace RestaurantApp
         }
 
 
-        private void LoadComments(){
-            foreach (var comment in WindowWriteComment.CommentsList)
-            {
-               
-                ListBoxComments.Items.Add(comment);
+        private void LoadComments()
+        {
+            CommentsPanel.Children.Clear();
 
+            RestaurantCollection restaurantCollection = new RestaurantCollection();
+            restaurantCollection.LoadFromFile("restaurant_data.json");
+            foreach(Restaurant restaurant in restaurantCollection.RestaurantList)
+            {
+
+                if (!string.IsNullOrEmpty(restaurant.Comment))
+                {
+
+                    MyCommentsDisplaycontroll myCommentsDisplaycontroll = new MyCommentsDisplaycontroll(restaurantCollection,restaurant.Name,restaurant.Comment);
+
+                    myCommentsDisplaycontroll.CommentDelete += ReloadComments;
+
+                    CommentsPanel.Children.Add(myCommentsDisplaycontroll);
+                }
             }
+        }
+
+        private void ReloadComments(object? sender, EventArgs e)
+        {
+            LoadComments();
         }
 
         private void CommentsBackToMainWindow_Click(object sender, RoutedEventArgs e)

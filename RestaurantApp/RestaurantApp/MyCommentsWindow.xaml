@@ -23,8 +23,9 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Grid.ColumnSpan="3" Background="Yellow"/>
         
-        <Button x:Name="CommentsBackToMainWindow" Content="🏠" FontSize="35" Background="Transparent" BorderThickness="0" Margin="5" Click="CommentsBackToMainWindow_Click"/>
-        <ComboBox x:Name="MyCommentsComboboxSearchCritics" Background="Yellow" Width="150" Height="50" Margin="5" Grid.Column="2">
+        <Button x:Name="CommentsBackToMainWindow" Content="🏠" FontSize="45" Background="Transparent" BorderThickness="0" Margin="5" Click="CommentsBackToMainWindow_Click"/>
+        <Label Content="Sortieren Nach:" FontSize="35" VerticalAlignment="Center" FontFamily="Britannic" Grid.Column="1" HorizontalAlignment="Right"/>
+        <ComboBox x:Name="MyCommentsComboboxSearchCritics"  Background="Yellow" Width="250" Height="70" Margin="5" Grid.Column="2" SelectionChanged="MyCommentsComboboxSearchCritics_SelectionChanged">
             <ComboBoxItem Content="A-Z" Background="Yellow"/>
             <ComboBoxItem Content="Z-A" Background="Yellow"/>
         </ComboBox>

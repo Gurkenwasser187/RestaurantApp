@@ -8,7 +8,8 @@
              Background="AliceBlue"
              BorderThickness="5"
              BorderBrush="Black"
-             Height="255" Width="260">
+             Margin="5"
+             Height="450" Width="455">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -18,9 +19,9 @@
 
         <Border Background="LightGray" Grid.Row="2"/>
         <Border Background="LightGray" Grid.Row="0"/>
-        <Label x:Name="MyCommentsDisplayControllLabelName" Content="Name" Grid.Row="0" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center"/>
+        <Label x:Name="MyCommentsDisplayControllLabelName" Content="Name" Grid.Row="0" HorizontalAlignment="Center" FontSize="50" VerticalAlignment="Center"/>
         <TextBlock x:Name="MyCommentsTextBlock" Grid.Column="1" Grid.Row="1" Margin="5" TextWrapping="Wrap"/>
-        <Button Content="Löschen" x:Name="DeleteCommentButton" Grid.Row="2" HorizontalAlignment="Center" Width="200" Margin="10" FontSize="15" Click="WriteCommentButtonDelete_Click" Height="25"/>
+        <Button Content="Löschen" x:Name="DeleteCommentButton" Grid.Row="2" HorizontalAlignment="Center" Width="440" Margin="10" FontSize="15" Click="WriteCommentButtonDelete_Click" Height="70"/>
         
     </Grid>
 </UserControl>

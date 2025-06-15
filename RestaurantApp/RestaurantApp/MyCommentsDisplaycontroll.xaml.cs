@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium.DevTools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Serilog;
 
 namespace RestaurantApp
 {
@@ -38,6 +40,9 @@ namespace RestaurantApp
             MyCommentsTextBlock.Text = comment;
             MyCommentsDisplayControllLabelName.Content = DisplayName;
 
+            Serilog.Log.Debug($"MyCommentsDisplayControll created for restaurant {DisplayName} with comment: {Comment}");
+            
+
         }
 
         
@@ -47,13 +52,14 @@ namespace RestaurantApp
             {
                 if (restaurant.Name == DisplayName)
                 {
+                    Serilog.Log.Debug($"Deleting comment for restaurant {DisplayName}");
                     restaurant.Comment = null;
-
-                    break;
                 }
             }
 
             restaurantCollection.SaveToFile("restaurant_data.json");
+            Serilog.Log.Debug($"Comment for {DisplayName} got successfully deleted and changes were saved");
+           
 
             CommentDelete?.Invoke(this, new EventArgs());
         }

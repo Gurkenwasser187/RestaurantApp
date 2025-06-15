@@ -28,6 +28,7 @@ namespace RestaurantApp
 
         RestaurantCollection restaurantCollection = new RestaurantCollection();
 
+        private const int maxWord = 50;
 
         public WindowWriteComment(string name)
         {
@@ -43,7 +44,6 @@ namespace RestaurantApp
         }
 
         
-
         private void ButtonPost_Click(object sender, RoutedEventArgs e)
         {
             foreach(Restaurant restaurant in restaurantCollection.RestaurantList)
@@ -52,18 +52,37 @@ namespace RestaurantApp
                 {
                     restaurant.Comment = TextBoxComment.Text;
                     
-                    break;
                 }
+                Log.Debug($"Comment for restaurant {restaurant.Name} was posted successfully: {restaurant.Comment}");
             }
-
             restaurantCollection.SaveToFile(FilePath);
+            
 
+            if(string.IsNullOrWhiteSpace(TextBoxComment.Text) || TextBoxComment.Text == "Schreibe etwas...")
+            {
+               
+                MessageBox.Show("Bitte schreiben sie etwas");
+                return;
+            }
             this.Close();
         }
 
         private void CommentWrite_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBoxComment.Text = "";
+        }
+
+        private void TextBoxComment_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string[] words = TextBoxComment.Text.Split(new[] { ' ', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (words.Length > maxWord) 
+            {
+                MessageBox.Show($"Man darf maximal {maxWord} Wörter schreiben.");
+                TextBoxComment.Text = null;
+
+            }
+
         }
     }
 }

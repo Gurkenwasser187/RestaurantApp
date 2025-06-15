@@ -8,9 +8,9 @@
              Margin="10"
              BorderBrush="Black"
              BorderThickness="5"
-             d:DesignHeight="450" d:DesignWidth="455">
+             Height="450" Width="455">
 
-    <Grid Background="White" Width="450" Height="450">
+    <Grid Background="White" Width="450" Height="445">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>

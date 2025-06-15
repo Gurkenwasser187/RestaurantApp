@@ -9,7 +9,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Serilog;
 using System.IO;
 
 namespace RestaurantApp
@@ -19,6 +18,8 @@ namespace RestaurantApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private RestaurantCollection _restaurantCollection;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,6 +48,17 @@ namespace RestaurantApp
         {
             MyCommentsWindow myCommentsWindow = new MyCommentsWindow();
             myCommentsWindow.Show();
+            this.Close();
+        }
+
+        private void ButtonTopThree_Click(object sender, RoutedEventArgs e)
+        {
+            var restaurantCollection = new RestaurantCollection();
+            restaurantCollection.LoadFromFile("restaurant_data.json");
+            
+            var top3Window = new Top3Restaurants(restaurantCollection);
+            top3Window.Show();
+
             this.Close();
         }
     }

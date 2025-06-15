@@ -1,0 +1,29 @@
+﻿<Window x:Class="RestaurantApp.Top3Restaurants"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantApp"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowState="Maximized"
+        Title="Top3Restaurants">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        
+
+      
+
+        <Border Grid.Row="0" Background="MediumPurple"/>
+        <Label Content="⭐⭐⭐ Top 3 Restaurants ⭐⭐⭐" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" Foreground="White"/>
+        <Button x:Name="Top3RestaurantsBackToMainWindow" Content="🏠" FontSize="40" Background="Transparent" BorderThickness="0" Margin="5" Click="Top3RestaurantsBackToMainWindow_Click" HorizontalAlignment="Left" Foreground="White"/>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" >
+            <StackPanel x:Name="PanelTop3" Orientation="Vertical" Margin="10"/>
+        </ScrollViewer>
+    </Grid>
+</Window>

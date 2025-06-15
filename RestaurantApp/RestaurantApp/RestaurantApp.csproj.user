@@ -22,6 +22,9 @@
     <Compile Update="SearchWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Top3Restaurants.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="WindowWriteComment.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -43,6 +46,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SearchWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Top3Restaurants.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowWriteComment.xaml">

@@ -30,28 +30,19 @@ namespace RestaurantApp
             restaurantCollection = new RestaurantCollection();
             restaurantCollection.LoadFromFile("restaurant_data.json");
             LoadComments();
-            
-
 
         }
-
 
         private void LoadComments()
         {
             CommentsPanel.Children.Clear();
 
-            
             foreach(Restaurant restaurant in restaurantCollection.RestaurantList)
             {
-
                 if (!string.IsNullOrEmpty(restaurant.Comment))
                 {
-
                     MyCommentsDisplaycontroll myCommentsDisplaycontroll = new MyCommentsDisplaycontroll(restaurantCollection, restaurant.Name, restaurant.Comment);
-
                     myCommentsDisplaycontroll.CommentDelete += ReloadComments;
-
-
                     CommentsPanel.Children.Add(myCommentsDisplaycontroll);
 
                     Serilog.Log.Debug($"Comment for {restaurant.Name} was loaded successfully");

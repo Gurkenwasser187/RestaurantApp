@@ -45,7 +45,7 @@ namespace RestaurantApp
 
         private void ShowTop3Restaurants()
         {
-            if (_restaurantCollection.RestaurantList == null || !_restaurantCollection.RestaurantList.Any())
+            if (_restaurantCollection.RestaurantList == null || !_restaurantCollection.RestaurantList.Any()) // Prüft , ob die Restaurantliste leer oder null ist
             {
                 Log.Warning("No restaurants available to display.");
                 MessageBox.Show("Keine Restaurants verfügbar.");
@@ -54,12 +54,12 @@ namespace RestaurantApp
             }
            
             var top3Restaurants = _restaurantCollection.RestaurantList
-                .OrderByDescending(r  => r.Rating)
-                .Take(3)
-                .ToList();
+                .OrderByDescending(r  => r.Rating)  // Nach Rating absteigend sortieren
+                .Take(3)                             // Die ersten drei Restaurants nehmen
+                .ToList();                            // In eine Liste umwandeln
             Log.Information("Top 3 Restaurants selected.");
 
-            PanelTop3.Children.Clear();
+            PanelTop3.Children.Clear();    // Löscht alte Anzeigeelemente im Panel, damit keine Duplikate entstehen
 
             foreach (var restaurant in top3Restaurants)
             {
@@ -67,11 +67,11 @@ namespace RestaurantApp
 
                 var displayControl = new RestaurantDisplay(restaurant.Name, restaurant.KindOfFood,restaurant.Address,restaurant.Rating,restaurant.Link,restaurant.IsLiked)
                 {
-                    DataContext = restaurant 
+                    DataContext = restaurant    // Verbindet das Anzeigeelement mit den Infos des Restaurants 
                 };
 
                 
-                PanelTop3.Children.Add(displayControl);
+                PanelTop3.Children.Add(displayControl);  // Fügt das Anzeigeelement in das Panel ein
             }
         }
     }

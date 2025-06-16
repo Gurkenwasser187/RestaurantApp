@@ -27,24 +27,29 @@ namespace RestaurantApp
         public MyCommentsWindow()
         {
             InitializeComponent();
-            restaurantCollection = new RestaurantCollection();
-            restaurantCollection.LoadFromFile("restaurant_data.json");
-            LoadComments();
+            restaurantCollection = new RestaurantCollection(); // Neue Sammlung wird erstellt
+            restaurantCollection.LoadFromFile("restaurant_data.json"); // Kommentare aus diesem File Laden
+            LoadComments(); // Kommentare anzeigen
 
         }
 
-        private void LoadComments()
+        private void LoadComments() 
         {
-            CommentsPanel.Children.Clear();
+            CommentsPanel.Children.Clear(); // Löscht die vorherigen Kommentare
 
-            foreach(Restaurant restaurant in restaurantCollection.RestaurantList)
+            foreach(Restaurant restaurant in restaurantCollection.RestaurantList)  // Geht alle Restaurants durch
             {
-                if (!string.IsNullOrEmpty(restaurant.Comment))
+                if (!string.IsNullOrEmpty(restaurant.Comment)) // Nur Restaurants mit einem Kommentar anzeigen
                 {
+                    // Neues Anzeige-Element für den Kommentar erstellen
                     MyCommentsDisplaycontroll myCommentsDisplaycontroll = new MyCommentsDisplaycontroll(restaurantCollection, restaurant.Name, restaurant.Comment);
-                    myCommentsDisplaycontroll.CommentDelete += ReloadComments;
-                    CommentsPanel.Children.Add(myCommentsDisplaycontroll);
 
+                    // Event verbinden: Wenn Kommentar gelöscht wird, Liste neu laden
+                    myCommentsDisplaycontroll.CommentDelete += ReloadComments;
+
+                    // Kommentar wird zu GUI hinzugefügt
+                    CommentsPanel.Children.Add(myCommentsDisplaycontroll);
+                     
                     Serilog.Log.Debug($"Comment for {restaurant.Name} was loaded successfully");
 
                 }
@@ -53,7 +58,8 @@ namespace RestaurantApp
 
         private void ReloadComments(object? sender, EventArgs e)
         {
-            LoadComments();
+
+            LoadComments(); // Aktualisiert Liste, wenn ein Kommentar gelöscht wurde
         }
 
         private void CommentsBackToMainWindow_Click(object sender, RoutedEventArgs e)
@@ -65,6 +71,8 @@ namespace RestaurantApp
 
         private void MyCommentsComboboxSearchCritics_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Sortierungen der Restaurants:
+
             switch (MyCommentsComboboxSearchCritics.SelectedIndex){
                 case 0:
                     restaurantCollection.SortByNameAZ();
